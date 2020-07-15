@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarketPos</string>
+    <string name="title_activity_agenctivity">Agenctivity</string>
+    <string name="title_activity_agen">AgenActivity</string>
 </resources>

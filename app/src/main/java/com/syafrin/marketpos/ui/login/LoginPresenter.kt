@@ -49,6 +49,7 @@ class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter{
         prefManager.prefsIsAktif = dataLogin.is_active!!
         prefManager.prefsJk = dataLogin.jk!!
         prefManager.prefsPassword = dataLogin.password!!
+        prefManager.prefsNamaPegawai = dataLogin.nama_pegawai!!
     }
 
 }
