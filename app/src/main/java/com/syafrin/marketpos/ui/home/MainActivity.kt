@@ -9,6 +9,7 @@ import com.syafrin.marketpos.R
 import com.syafrin.marketpos.data.database.PrefsManager
 import com.syafrin.marketpos.ui.agen.AgenActivity
 import com.syafrin.marketpos.ui.login.LoginActivity
+import com.syafrin.marketpos.ui.transaksi.TransaksiActivity
 import com.syafrin.marketpos.ui.user.UserActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,7 +41,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             }
         }
     }
-    override fun initListener() {
+
+
+    override fun initActivity() {
 
         crvAgent.setOnClickListener {
             if(prefsManager.prefIslogin){
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         crvTransaction.setOnClickListener {
             if(prefsManager.prefIslogin){
-                showMessage("belum ada modul")
+                startActivity(Intent(this, TransaksiActivity::class.java))
             }else{
                 showMessage("anda belum login")
             }

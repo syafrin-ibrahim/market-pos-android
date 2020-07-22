@@ -1,8 +1,8 @@
 package com.syafrin.marketpos.ui.login
 
 import com.syafrin.marketpos.data.database.PrefsManager
-import com.syafrin.marketpos.data.model.DataLogin
-import com.syafrin.marketpos.data.model.ResponseLogin
+import com.syafrin.marketpos.data.model.login.DataLogin
+import com.syafrin.marketpos.data.model.login.ResponseLogin
 import com.syafrin.marketpos.network.ApiService
 import retrofit2.Call
 import retrofit2.Callback

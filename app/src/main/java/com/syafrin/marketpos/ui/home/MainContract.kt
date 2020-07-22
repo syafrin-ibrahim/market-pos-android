@@ -2,7 +2,7 @@ package com.syafrin.marketpos.ui.home
 
 interface MainContract {
     interface View{
-        fun initListener()
+        fun initActivity()
         fun showMessage(msg: String)
     }
 }

@@ -1,14 +1,14 @@
 package com.syafrin.marketpos.ui.login
 
 import com.syafrin.marketpos.data.database.PrefsManager
-import com.syafrin.marketpos.data.model.DataLogin
-import com.syafrin.marketpos.data.model.ResponseLogin
+import com.syafrin.marketpos.data.model.login.DataLogin
+import com.syafrin.marketpos.data.model.login.ResponseLogin
 
 interface LoginContract{
 
     interface Presenter{
         fun doLogin(username: String, password: String)
-        fun setPrefs(prefManager: PrefsManager, dataLogin: DataLogin )
+        fun setPrefs(prefManager: PrefsManager, dataLogin: DataLogin)
     }
 
     interface View{

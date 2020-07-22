@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import android.view.View
-import android.util.Log
 import com.syafrin.marketpos.R
 import com.syafrin.marketpos.data.database.PrefsManager
-import com.syafrin.marketpos.data.model.ResponseLogin
+import com.syafrin.marketpos.data.model.login.ResponseLogin
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {

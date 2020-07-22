@@ -1,7 +1,7 @@
-package com.syafrin.marketpos.data.model
+package com.syafrin.marketpos.data.model.login
 
 import com.google.gson.annotations.SerializedName
-import com.syafrin.marketpos.data.model.DataLogin
+import com.syafrin.marketpos.data.model.login.DataLogin
 
 data class ResponseLogin(
     @SerializedName("status") val status : Boolean,

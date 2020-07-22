@@ -1,4 +1,4 @@
-package com.syafrin.marketpos.data.model
+package com.syafrin.marketpos.data.model.login
 
 import com.google.gson.annotations.SerializedName
 
