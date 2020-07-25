@@ -2,6 +2,7 @@ package com.syafrin.marketpos.ui.cart
 
 import com.syafrin.marketpos.data.model.cart.ResponseCartList
 import com.syafrin.marketpos.data.model.cart.ResponseCartUpdate
+import com.syafrin.marketpos.data.model.cart.ResponseCheckout
 import com.syafrin.marketpos.network.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +24,7 @@ class CartPresenter (val view: CartContract.View): CartContract.Presenter {
                     if(response.isSuccessful){
                         val responseCartUpdate: ResponseCartUpdate? = response.body()
                         view.onResultDeleteCart(responseCartUpdate!!)
+                        view.showMessage(responseCartUpdate.message)
                     }
                 }
 
@@ -73,4 +75,27 @@ class CartPresenter (val view: CartContract.View): CartContract.Presenter {
 
         })
     }
+
+    override fun checkout(username: String, kd_agen: Long) {
+            view.onLoadingCheckout(true)
+            ApiService.endPoint.checkout(username, kd_agen).enqueue(object: Callback<ResponseCheckout>{
+                override fun onFailure(call: Call<ResponseCheckout>, t: Throwable) {
+                    view.onLoadingCheckout(false)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCheckout>,
+                    response: Response<ResponseCheckout>
+                ) {
+                    view.onLoadingCheckout(false)
+                    if(response.isSuccessful){
+                        val responseCheckout: ResponseCheckout? = response.body()
+                        view.onResultCheckout(responseCheckout!!)
+                        view.showMessage(responseCheckout.message)
+                    }
+                }
+
+            })
+    }
+
 }

@@ -5,6 +5,7 @@ import com.syafrin.marketpos.data.model.agen.ResponseAgenDetail
 import com.syafrin.marketpos.data.model.agen.ResponseAgenUpdate
 import com.syafrin.marketpos.data.model.cart.ResponseCartList
 import com.syafrin.marketpos.data.model.cart.ResponseCartUpdate
+import com.syafrin.marketpos.data.model.cart.ResponseCheckout
 import com.syafrin.marketpos.data.model.category.ResponseCategoryList
 import com.syafrin.marketpos.data.model.login.ResponseLogin
 import com.syafrin.marketpos.data.model.product.ResponseProductList
@@ -114,4 +115,10 @@ interface ApiEndPoint {
         @Query("keyword") keyword: String
     ):Call<ResponseAgen>
 
+    @FormUrlEncoded
+    @POST("checkout")
+    fun checkout(
+        @Field("username")username: String,
+        @Field("kd_agen")kd_agen: Long
+    ):Call<ResponseCheckout>
 }

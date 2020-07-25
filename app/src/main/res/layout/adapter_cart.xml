@@ -63,7 +63,6 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_adapter_delete"
-            android:tint="@color/colorWhite"
             android:padding="2.5dp"/>
 
 

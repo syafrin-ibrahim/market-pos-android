@@ -30,7 +30,7 @@ class AgenSearchAdapter(val context: Context, var dataAgen: ArrayList<DataAgen>,
             .centerCrop()
             .placeholder(R.drawable.img_no_image)
             .error(R.drawable.img_no_image)
-            .into(holder.view.img_agen)
+            .into(holder.view.imvImage)
             holder.view.crvAgent.setOnClickListener {
                 Constant.AGENT_ID = dataAgen[position].kd_agen!!
                 clickListener(dataAgen[position], position)

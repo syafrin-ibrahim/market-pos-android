@@ -13,6 +13,7 @@ import com.syafrin.marketpos.data.database.PrefsManager
 import com.syafrin.marketpos.data.model.cart.DataCart
 import com.syafrin.marketpos.data.model.cart.ResponseCartList
 import com.syafrin.marketpos.data.model.cart.ResponseCartUpdate
+import com.syafrin.marketpos.data.model.cart.ResponseCheckout
 import com.syafrin.marketpos.ui.agen.search.AgenSearchActivity
 import com.syafrin.marketpos.ui.cart.add.CartAddActivity
 import kotlinx.android.synthetic.main.activity_cart.*
@@ -33,7 +34,8 @@ class CartActivity : AppCompatActivity(), CartContract.View {
 
 
     override fun onResultDeleteCart(responseCartUpdate: ResponseCartUpdate) {
-
+        presenter.getCart(prefsManager.prefUsername)
+        cartAdapter.removeAll()
     }
 
     override fun showDialog() {
@@ -103,7 +105,15 @@ class CartActivity : AppCompatActivity(), CartContract.View {
         }
 
         btnCheckOut.setOnClickListener {
-
+            if(cartAdapter.cart.isNullOrEmpty()){
+                showMessage("Keranjang Tidak Boleh Kosong")
+            }else{
+                if(edtAgenCart.text.isNullOrEmpty()){
+                    edtAgenCart.error = "tidak boleh kosong"
+                }else{
+                    presenter.checkout(prefsManager.prefUsername,  Constant.AGENT_ID)
+                }
+            }
         }
 
 
@@ -132,5 +142,23 @@ class CartActivity : AppCompatActivity(), CartContract.View {
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 
+    override fun onLoadingCheckout(loading: Boolean) {
+        when(loading){
+            true ->{
+                btnCheckOut.isEnabled = false
+                btnCheckOut.setText("Memuat")
+            }
+
+            false -> {
+                btnCheckOut.isEnabled = true
+                btnCheckOut.setText("Checkout")
+            }
+        }
+    }
+
+    override fun onResultCheckout(responseCheckout: ResponseCheckout) {
+        presenter.getCart(prefsManager.prefUsername)
+        cartAdapter.removeAll()
+    }
 
 }

@@ -25,7 +25,7 @@ class CartAdapter(val context: Context, var cart: ArrayList<DataCart>,
 
     override fun onBindViewHolder(holder: ViewHolderCart, position: Int) {
         holder.bing(cart[position])
-        GlideHelper.setImage(context, cart[position].img_produk!!, holder.view.cartDelete);
+        GlideHelper.setImage(context, cart[position].img_produk!!, holder.view.cartImgProduct);
         holder.view.cartDelete.setOnClickListener {
             clickListener(cart[position], position)
             removeCart(position)
